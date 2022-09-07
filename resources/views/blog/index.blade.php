@@ -2,7 +2,7 @@
 @section('title',"PortfolioBlog | Blog")
 @section('content')
     @if (Session::has('success'))
-        <div class="row text-center">
+        <div class="row text-centern mt-2">
             <div class="col-4"></div>
             <div  x-data="{show: true }" x-show="show" x-init="setTimeout(()=> show = false, 3000)"  class="col-4 alert alert-success alert-dismissible">
                     <p class="btn-info">{{ Session::get('success') }}</p>

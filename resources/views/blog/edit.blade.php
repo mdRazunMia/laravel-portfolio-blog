@@ -3,9 +3,9 @@
 @section('title',"PortfolioBlog | Edit: Blog")
 
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-8 mt-2 mb-2">
              <div class="card">
                 <div class="card-header">{{ __('Create Blog Post') }}</div>
 
