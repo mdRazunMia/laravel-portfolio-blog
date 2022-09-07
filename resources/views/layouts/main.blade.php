@@ -15,11 +15,12 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
+        <nav class="navbar navbar-expand-md navbar-light bg-info shadow-sm">
+            <div class="container-fluid">
                 {{-- <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'PortfolioBlog') }}
                 </a> --}}
@@ -40,16 +41,18 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
-                        <li class="nav-item">
-                              <a class="nav-link" href="{{ route('blog.create') }}">
-                                     Create Blog
-                               </a>
-                        </li>
 
+                        @auth
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('blog.create') }}">
+                                        Create Blog
+                                </a>
+                            </li>
+                        @endauth
                         <li class="nav-item">
-                              <a class="nav-link" href="{{ url('/blog') }}">
-                                     personal blog
-                               </a>
+                                <a class="nav-link" href="{{ url('/blog') }}">
+                                        personal blog
+                                </a>
                         </li>
                         @guest
                             @if (Route::has('login'))
@@ -86,14 +89,16 @@
                 </div>
             </div>
         </nav>
-        <main class="my-1 py-4">
+        <main class="my-1 py-30" style="background-color: grey;">"
             @yield('content')
         </main>
-        <footer class="footer fixed-bottom bg-info pt-3">
-            <address class="text-center">
-                @copyright <strong>razun</strong>
-            </address>
-        </footer>
+        <div class="row w-10">
+            <footer class="footer bg-info py-3">
+                <address class="text-center">
+                    @copyright <strong>razun</strong>
+                </address>
+            </footer>
+        </div>
     </div>
 </body>
 </html>

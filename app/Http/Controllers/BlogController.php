@@ -17,7 +17,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::all();
+        $blogs = Blog::latest()->get();
         return view('blog.index', compact('blogs'));
     }
 
@@ -63,9 +63,9 @@ class BlogController extends Controller
      * @param  \App\Models\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function show(Blog $blog)
+    public function show($id)
     {
-        //
+
     }
 
     /**
@@ -74,9 +74,10 @@ class BlogController extends Controller
      * @param  \App\Models\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function edit(Blog $blog)
+    public function edit($id)
     {
-        //
+        $blog = Blog::find($id);
+        return view('blog.edit',compact('blog'));
     }
 
     /**
@@ -86,9 +87,16 @@ class BlogController extends Controller
      * @param  \App\Models\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Blog $blog)
+    public function update(Request $request, $id)
     {
-        //
+
+       $blog = Blog::find($id);
+       $blog->title = $request->title;
+       $blog->body = $request->body;
+
+       $blog->save();
+
+       return redirect()->route('blog.index')->with('success', 'Blog updated successfully');
     }
 
     /**
@@ -97,8 +105,12 @@ class BlogController extends Controller
      * @param  \App\Models\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Blog $blog)
+    public function destroy($id)
     {
-        //
+        $blog = Blog::find($id);
+
+        $blog->delete();
+
+        return redirect()->route('blog.index')->with('success', 'Blog deleted successfully');
     }
 }
