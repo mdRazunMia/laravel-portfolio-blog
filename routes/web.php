@@ -22,7 +22,7 @@ Auth::routes();
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::prefix('/blog')->group(function () {
+Route::prefix('/blog')->middleware('auth')->group(function () {
     Route::get('/',[BlogController::class, 'index'])->name('blog.index');
     Route::get('/create',[BlogController::class, 'create'])->name('blog.create');
     Route::post('/',[BlogController::class, 'store'])->name('blog.store');

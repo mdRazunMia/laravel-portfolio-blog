@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+// use auth;
 use App\Models\Blog;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class BlogController extends Controller
@@ -44,6 +46,7 @@ class BlogController extends Controller
         try{
             Blog::create(
                 [
+                    'user_id' => Auth::user()->id,
                     'title' => $request->title,
                     'body' => $request->body
                 ]);

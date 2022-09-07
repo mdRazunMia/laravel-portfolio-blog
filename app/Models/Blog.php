@@ -2,13 +2,18 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Blog extends Model
 {
     use HasFactory;
 
     protected $table = 'blogs';
-    protected $fillable = ['title','body','created_at','updated_at'];
+    protected $fillable = ['user_id','title','body','created_at','updated_at'];
+
+    public function user(){
+       return  $this->belongsTo(User::class);
+    }
 }

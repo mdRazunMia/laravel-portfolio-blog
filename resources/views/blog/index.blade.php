@@ -16,6 +16,8 @@
        @foreach ($blogs as $blog )
         <div class="col-6">
             <p>{{ $blog->title }}</p>
+            <p>Created By: {{ $blog->user->name }}</p>
+            <p>Posted At: {{ $blog->created_at->diffForHumans() }}</p>
         </div>
         <div class="col-6">
             <p>{{ $blog->body }}</p>
