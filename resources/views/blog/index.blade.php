@@ -10,14 +10,6 @@
             <div class="col-4"></div>
         </div>
     @endif
-    {{-- <div class="row mx-2">
-        <div class="h-20 w-20 col-6">
-            <img class="rounded img-responsive img-rounded w-100" src="{{ asset('images/personal_1.jpg') }}" alt="Madhop Pur Lack" title="Madhopur Lake, Clicked By: Al Mehdi Saadat Sir."/>
-        </div>
-        <div class="h-20 w-20 col-6">
-            <img class="rounded img-responsive img-rounded w-100 " src="{{ asset('images/personal_2.jpg') }}" alt="Madhop Pur Lack" title="Madhopur Lake, Clicked By: Al Mehdi Saadat Sir."/>
-        </div>
-    </div> --}}
     <div class="row text-center h-auto">
        @foreach ($blogs as $blog )
         <div class="col-8 bg-info m-auto rounded mt-2 mb-4">
@@ -26,7 +18,7 @@
             <hr>
             <p>{!! $blog->body !!}</p>
             <hr>
-           @auth
+           @if(auth::user()->user_type == 'admin')
                <div class="float-left">
                  <a class="btn btn-primary mb-2 center-block" href="{{ route('blog.edit',$blog->id) }}">Edit</a>
                 <form method="POST" action="{{ route('blog.destroy',$blog->id) }}">
@@ -35,7 +27,7 @@
                     <input class="btn btn-danger center-block mb-1" type="submit"  value="Delete"/>
                 </form>
            </div>
-           @endauth
+           @endif
         </div>
        @endforeach
     </div>

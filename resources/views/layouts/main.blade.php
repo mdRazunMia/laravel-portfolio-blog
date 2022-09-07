@@ -89,7 +89,7 @@
                 </div>
             </div>
         </nav>
-        <main class="my-1 py-30" style="background-color: grey;">"
+        <main class="my-1 py-30" style="background-color: grey;">
             @yield('content')
         </main>
         <div class="row w-10">
