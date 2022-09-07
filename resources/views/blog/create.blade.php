@@ -3,7 +3,7 @@
 @section('title',"PortfolioBlog | Create: Blog")
 
 @section('content')
-    <div class="container-fluid">
+    <div class="container-fluid" style="min-height: 800px">
         <div class="row justify-content-center">
             <div class="col-md-8 mt-2 mb-2">
              <div class="card">
@@ -16,7 +16,7 @@
                             <label for="title" class="col-md-4 col-form-label text-md-end">{{ __('Post Title') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') }}" placeholder="{{ __('Post Title') }}" required autocomplete="email" autofocus>
+                                <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') }}" placeholder="{{ __('Post Title') }}" required autocomplete="email" autofocus>
                                 @error('title')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -25,7 +25,7 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="body" class="col-md-4 col-form-label text-md-end">{{ __('Post Body') }}</label>
+                            <label for="body" class="ckeditor col-md-4 col-form-label text-md-end">{{ __('Post Body') }}</label>
 
                             <div class="col-md-6">
                                 <textarea class="form-control @error('body') is-invalid @enderror" placeholder="{{ __('Post Body') }}" rows="10" name="body" id="body">{{ old('body') }}</textarea>
